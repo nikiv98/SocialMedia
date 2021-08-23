@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="{{ url('assets/css/bootstrap.min.css') }}">
 </head>
 <body>
+    <header>
+        @include("layouts.header")
+    </header>
+
     <form class="w-25 p-3">
         <div class="form-group">
           <label for="exampleFormControlInput1">First Name</label>
@@ -22,5 +26,9 @@
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
       </form>
+
+      <footer>
+            @include('layouts.footer')
+      </footer>
 </body>
 </html>
