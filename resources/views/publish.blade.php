@@ -12,7 +12,7 @@
         @include("layouts.header")
     </header>
 
-    <form action="/publish" method="POST" class="w-25 p-3">
+    <form action="{{ route('post.store') }}" method="POST" class="w-25 p-3">
         @csrf
         <div class="form-group">
           <label for="exampleFormControlInput1">First Name</label>

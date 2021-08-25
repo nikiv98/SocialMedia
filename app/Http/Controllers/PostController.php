@@ -22,7 +22,7 @@ class PostController extends Controller
         $post = new Post;
         $post->fname = $request->input('fname');
         $post->lname = $request->input('lname');
-        $post->body = $request->textarea('body');
+        $post->body = $request->input('body');
         $post->save();
 
          return redirect('/');
