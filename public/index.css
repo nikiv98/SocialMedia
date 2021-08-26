@@ -1,0 +1,27 @@
+.container-index{
+    display: flex;
+    margin-bottom: 20px;
+    margin-left: 500px;
+    margin-right: 500px;
+    border-radius: 10px;
+    border: solid grey;
+    text-align: center;
+}
+
+.container-index h3{
+    padding-bottom: 10px;
+}
+
+.size-style{
+    height: 200px;
+}
+
+.date-style{
+    float: right;
+    padding-top: 50px;
+}
+.post-title{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
