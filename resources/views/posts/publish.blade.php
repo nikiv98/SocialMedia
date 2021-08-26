@@ -29,6 +29,17 @@
         <button type="submit" class="btn btn-primary">Post</button>
       </form>
 
+      @if ($errors->any())
+        <div class="alert alert-danger" role="alert">
+
+              You cant have empty post
+              
+              @foreach ($errors->all as $error)
+                {{ $error }}
+              @endforeach
+        </div>
+        
+      @endif
       <footer>
             @include('layouts.footer')
       </footer>

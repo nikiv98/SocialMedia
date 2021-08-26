@@ -19,6 +19,13 @@ class PostController extends Controller
         return view('posts.publish');
     }
     public function store(Request $request){
+
+        $request->validate([
+            'fname' => 'required',
+            'lname' => 'required',
+            'body' => 'required'
+        ]);
+
         $post = new Post;
         $post->fname = $request->input('fname');
         $post->lname = $request->input('lname');
