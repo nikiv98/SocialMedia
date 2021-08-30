@@ -32,7 +32,7 @@ class PostController extends Controller
         $post->body = $request->input('body');
         $post->save();
 
-         return redirect('/index');
+         return redirect('/posts/publish')->with('success', 'Post created');
 
     }
     

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserAuthController;
 
 
 
@@ -13,3 +14,7 @@ Route::post('/contact/store',[ContactsController::class, 'store'])->name('contac
 
 # Added by Velichko
 Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+
+Route::get('login', [UserAuthController::class, 'login']);
+Route::get('register', [UserAuthController::class, 'register']);
+Route::post('/auth/create',[UserAuthController::class, 'create'])->name('auth.create');

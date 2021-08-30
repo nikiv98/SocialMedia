@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contacts</title>
-    <link rel="stylesheet" href="{{ url('assets/css/bootstrap.min.css') }}">
+    @include('layouts.head')
 </head>
 <body>
     <header>
@@ -39,7 +35,12 @@
                 {{ $error }}
               @endforeach
         </div>
-        
+      @endif
+
+      @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
       @endif
 
     <footer>

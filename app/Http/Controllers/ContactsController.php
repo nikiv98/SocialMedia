@@ -28,6 +28,6 @@ class ContactsController extends Controller
         $contact->information = $request->input('information');
         $contact->save();
 
-        return redirect('/contacts');
+        return redirect('/contacts')->with('success', 'Contact created');
     }
 }

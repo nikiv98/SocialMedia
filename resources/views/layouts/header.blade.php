@@ -8,13 +8,21 @@
           <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/index">Posts</a>
+          <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/posts/publish">Publish</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/contacts">Contact us</a>
+        </li>
+      </ul>
+      <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link navbar-text" href="">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-text" href="">Register</a>
         </li>
       </ul>
       
