@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserAuthController extends Controller
 {
@@ -37,22 +39,32 @@ class UserAuthController extends Controller
     }
 
     public function check(Request $request){
-        $request->validate([
+         $request->validate([
             'email'=>'required|email',
             'password'=>'required|min:5|max:12'
 
         ]);
 
-        $user = User::where('email', '=', $request->email)->first();
-        if($user){
-            if(Hash::check($request->password, $user->password)){
-                $request->session()->put('LoggedUser', $user->id);
-                return redirect('index');
-            }else{
-                return back()->with('fail', 'Invalid password');
-            }      
-        }else{
-            return back()->with('fail', 'No account found');
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard')
+                        ->withSuccess('Signed in');
         }
+  
+        return redirect("login")->withSuccess('Login details are not valid');
+    }
+    public function dashboard()
+    {
+        if(Auth::check()){
+            return view('dashboard');
+        }
+  
+        return redirect("login")->withSuccess('You are not allowed to access');
+    }
+
+    public function signOut() {
+        Auth::logout();
+  
+        return Redirect('login');
     }
 }

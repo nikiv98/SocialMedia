@@ -23,6 +23,7 @@
             @if (Route::has('register'))
                 <a class="nav-link navbar-text" href="{{ route('register') }}">{{ __('Register') }}</a>
             @endif
+
             @else
               <span>{{ Auth::user()->name }}</span>
 
