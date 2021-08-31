@@ -8,15 +8,17 @@
         @include('layouts.header')
     </header>
 
-    <form class="w-25 p-3">
+    <form action="{{ route('auth.check') }}" method="POST" class="w-25 p-3">
         @csrf
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <span class="text-danger">@error('email'){{ $message }}@enderror</span>
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+          <span class="text-danger">@error('password'){{ $message }}@enderror</span>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Login</button>

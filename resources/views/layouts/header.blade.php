@@ -18,13 +18,22 @@
         </li>
       </ul>
       <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link navbar-text" href="">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link navbar-text" href="">Register</a>
-        </li>
+        @guest
+            <a class="nav-link navbar-text" href="{{ route('login') }}">{{ __('Login') }}</a>
+            @if (Route::has('register'))
+                <a class="nav-link navbar-text" href="{{ route('register') }}">{{ __('Register') }}</a>
+            @endif
+            @else
+              <span>{{ Auth::user()->name }}</span>
+
+              <a href="{{ route('logout') }}"
+                class="nav-link navbar-text"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                    {{ csrf_field() }}
+              </form>
+         @endguest
       </ul>
-      
     </div>
   </nav>
