@@ -30,6 +30,7 @@ class PostController extends Controller
         $post->fname = $request->input('fname');
         $post->lname = $request->input('lname');
         $post->body = $request->input('body');
+        $post->user_id = auth()->user()->id;
         $post->save();
 
          return redirect('/posts/publish')->with('success', 'Post created');

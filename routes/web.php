@@ -7,6 +7,7 @@ use App\Http\Controllers\UserAuthController;
 
 
 
+Route::get('/', [PostController::class, 'index']);
 Route::get('/index', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/publish', [PostController::class, 'create'])->name('posts.publish');
 Route::get('/contacts', [ContactsController::class, 'create'])->name('contacts.contactus');
@@ -20,4 +21,4 @@ Route::get('register', [UserAuthController::class, 'register'])->name('register'
 Route::post('/auth/create',[UserAuthController::class, 'create'])->name('auth.create');
 Route::post('check',[UserAuthController::class, 'check'])->name('auth.check');
 Route::get('dashboard', [UserAuthController::class, 'dashboard']);
-Route::get('signout', [UserAuthController::class, 'signOut'])->name('signout');
+Route::post('signout', [UserAuthController::class, 'signOut'])->name('signout');

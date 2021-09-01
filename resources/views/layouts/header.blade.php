@@ -19,21 +19,24 @@
       </ul>
       <ul class="nav justify-content-end">
         @guest
+
             <a class="nav-link navbar-text" href="{{ route('login') }}">{{ __('Login') }}</a>
             @if (Route::has('register'))
                 <a class="nav-link navbar-text" href="{{ route('register') }}">{{ __('Register') }}</a>
             @endif
 
             @else
-              <span>{{ Auth::user()->name }}</span>
+              <a class="nav-link navbar-text" href="">{{ Auth::user()->first_name}}</a>
 
-              <a href="{{ route('logout') }}"
+              <a href="{{ route('signout') }}"
                 class="nav-link navbar-text"
                 onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                document.getElementById('logout-form').submit();">{{ __('Signout') }}</a>
+
+              <form id="logout-form" action="{{ route('signout') }}" method="POST" class="hidden">
                     {{ csrf_field() }}
               </form>
+              
          @endguest
       </ul>
     </div>

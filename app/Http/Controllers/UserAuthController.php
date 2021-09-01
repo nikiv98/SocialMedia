@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
+
 
 
 class UserAuthController extends Controller
@@ -47,24 +50,24 @@ class UserAuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('index')
                         ->withSuccess('Signed in');
         }
   
         return redirect("login")->withSuccess('Login details are not valid');
     }
-    public function dashboard()
-    {
+    public function dashboard(){
         if(Auth::check()){
-            return view('dashboard');
+            return view('index');
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');
     }
 
     public function signOut() {
+        Session::flush();
         Auth::logout();
-  
+
         return Redirect('login');
     }
 }

@@ -7,8 +7,9 @@
     <header>
         @include("layouts.header")
     </header>
-
-    <form action="{{ route('post.store') }}" method="POST" class="w-25 p-3">
+    
+    @if (Auth::user())
+      <form action="{{ route('post.store') }}" method="POST" class="w-25 p-3">
         @csrf
         <div class="form-group">
           <label for="exampleFormControlInput1">First Name</label>
@@ -42,6 +43,7 @@
             {{ session('success') }}
         </div>
       @endif
+    @endif
       
       <footer>
             @include('layouts.footer')
