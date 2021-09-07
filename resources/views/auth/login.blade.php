@@ -7,6 +7,14 @@
     <header>
         @include('layouts.header')
     </header>
+    
+    @if (session('successMsg'))
+
+      <div class="alert alert-success" role="alert">
+        {{ session('successMsg') }}
+      </div>
+      
+    @endif
 
     <form action="{{ route('auth.check') }}" method="POST" class="w-25 p-3">
         @csrf

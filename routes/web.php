@@ -22,5 +22,8 @@ Route::get('login', [UserAuthController::class, 'login'])->name('login');
 Route::get('register', [UserAuthController::class, 'register'])->name('register');
 Route::post('/auth/create',[UserAuthController::class, 'create'])->name('auth.create');
 Route::post('check',[UserAuthController::class, 'check'])->name('auth.check');
-Route::get('/auth/dashboard', [UserAuthController::class, 'dashboard'])->name('dashboard');
+Route::get('/auth/dashboard', [UserAuthController::class, 'dashboard'])
+        ->name('dashboard')
+        ->middleware('auth');
+Route::post('auth/dashboard',[UserAuthController::class, 'change_password'])->name('change.password');
 Route::post('signout', [UserAuthController::class, 'signOut'])->name('signout');

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
+
 class UserAuthController extends Controller
 {
     public function login(){
@@ -57,11 +58,32 @@ class UserAuthController extends Controller
         return redirect("login")->withSuccess('Login details are not valid');
     }
     public function dashboard(){
-        if(Auth::check()){
-            return view('dashboard');
+       
+        return view('auth.dashboard');
+    }
+
+    public function change_password(Request $request){
+        
+        $this->validate($request,[
+            'oldPassword' => 'required',
+            'newPassword' => 'required|confirmed|min:5|max:12',
+            'newPassword_confirmation' =>'required',
+
+        ]);
+
+        $hashPass = Auth::user()->password;
+
+        if(Hash::check($request->oldPassword, $hashPass)){
+
+            $user = User::find(Auth::id());
+            $user->password = Hash::make($request->newPassword);
+            $user->save();
+
+            return redirect()->route('login')->with('successMsg','Password changed');
+        }else{
+            return redirect()->back()->with('errorMsg','Invalid to change password');
         }
-  
-        return redirect("login")->withSuccess('You are not allowed to access');
+
     }
 
     public function signOut() {
