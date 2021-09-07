@@ -30,7 +30,7 @@
             @endif
 
             @else
-              <a class="nav-link navbar-text" href="">{{ Auth::user()->first_name}}</a>
+              <a class="nav-link navbar-text" href="">{{ Auth::user()->first_name}} {{ Auth::user()->last_name }}</a>
 
               <a href="{{ route('signout') }}"
                 class="nav-link navbar-text"
