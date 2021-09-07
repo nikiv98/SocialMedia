@@ -38,7 +38,7 @@ class UserAuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect('index')->with('success', 'You have signed in');
+        return redirect('login')->with('success', 'You have signed in');
     }
 
     public function check(Request $request){
@@ -58,7 +58,7 @@ class UserAuthController extends Controller
     }
     public function dashboard(){
         if(Auth::check()){
-            return view('index');
+            return view('dashboard');
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');

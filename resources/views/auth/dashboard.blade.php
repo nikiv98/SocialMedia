@@ -7,7 +7,9 @@
     <header>
         @include('layouts.header')
     </header>
+
         <h1>Welcome in your profile</h1>
+        
     <footer>
         @include('layouts.footer')
     </footer>

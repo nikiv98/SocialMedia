@@ -11,7 +11,11 @@
           <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/posts/publish">Publish</a>
+          
+            @if (Auth::user())
+              <a class="nav-link" href="{{ route('posts.publish') }}">Publish</a>
+            @endif
+
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/contacts">Contact us</a>
