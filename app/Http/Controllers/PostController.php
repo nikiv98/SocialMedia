@@ -48,7 +48,7 @@ class PostController extends Controller
         return view('posts.myPosts', compact('user', 'posts'));
     }
 
-    public function editPost($id){
+    public function editPost(Request $request, $id){
 
         $post = Post::find($id);
         return view('posts.edit', compact('post'));

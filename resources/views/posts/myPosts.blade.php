@@ -18,7 +18,7 @@
                   <p class="card-text">{{ $post->body }}</p>
                   <p class="card-text date-style">{{ $post->created_at }}</p>
                   @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
-                    <a href="{{ route('posts.edit') }}"  class="post-opt p-edit">Edit</a>
+                    <a href="{{ route('posts.edit', $post->id) }}"  class="post-opt p-edit">Edit</a>
                     <a href="{{ route('delete.post') }}" class="post-opt p-del">Delete</a>
                   @endif
                 </div>
