@@ -4,18 +4,20 @@
     @include('layouts.head')
 </head>
 <body>
+
     <header>
-        @include("layouts.header")
+        @include('layouts.header')
     </header>
     
-    @if (Auth::user())
-      <form action="{{ route('post.store') }}" method="POST" class="w-25 p-3">
+    @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
+      <form action="{{ route('update.post'), $post->id }}" method="POST" class="w-25 p-3">
         @csrf
+        
         <div class="form-group">
-          <label for="exampleFormControlTextarea1" class="wrt_post">Write your Post</label>
-          <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+          <label for="exampleFormControlTextarea1" class="wrt_post">Edit your Post</label>
+          <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="6">{{ $post->body }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-publish">Post</button>
+        <button type="submit" class="btn btn-primary btn-publish">Edit Post</button>
       </form>
 
       @if ($errors->any())
@@ -36,9 +38,10 @@
         </div>
       @endif
     @endif
-      
-      <footer>
-            @include('layouts.footer')
-      </footer>
+
+    <footer>
+        @include('layouts.footer')
+    </footer>
+    
 </body>
 </html>
