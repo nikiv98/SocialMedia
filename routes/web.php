@@ -29,5 +29,5 @@ Route::post('auth/dashboard',[UserAuthController::class, 'change_password'])->na
 Route::post('signout', [UserAuthController::class, 'signOut'])->name('signout');
 Route::get('/my_posts',[PostController::class, 'myPosts'])->name('my.posts');
 Route::get('/edit-post/{id}',[PostController::class, 'editPost'])->name('posts.edit');
-Route::post('/update-post',[PostController::class, 'updatePost'])->name('update.post');
+Route::post('/update-post/{id}',[PostController::class, 'updatePost'])->name('posts.update');
 Route::get('/delete-post{id}',[PostController::class, 'deletePost'])->name('delete.post');

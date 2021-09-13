@@ -52,9 +52,9 @@ class PostController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function updatePost(Request $request){
+    public function updatePost(Request $request, $id){
 
-        $post=Post::find($request -> id);
+        $post=Post::find($id);
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
         $post->save();

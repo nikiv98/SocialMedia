@@ -10,7 +10,7 @@
     </header>
     
     @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
-      <form action="{{ route('update.post'), $post->id }}" method="POST" class="w-25 p-3">
+      <form action="{{ route('posts.update', $post->id) }}" method="POST" class="w-25 p-3">
         @csrf
         
         <div class="form-group">
