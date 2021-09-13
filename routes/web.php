@@ -30,4 +30,4 @@ Route::post('signout', [UserAuthController::class, 'signOut'])->name('signout');
 Route::get('/my_posts',[PostController::class, 'myPosts'])->name('my.posts');
 Route::get('/edit-post/{id}',[PostController::class, 'editPost'])->name('posts.edit');
 Route::post('/update-post',[PostController::class, 'updatePost'])->name('update.post');
-Route::get('/delete-post',[PostController::class, 'deletePost'])->name('delete.post');
+Route::get('/delete-post{id}',[PostController::class, 'deletePost'])->name('delete.post');

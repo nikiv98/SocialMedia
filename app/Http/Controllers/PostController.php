@@ -30,13 +30,11 @@ class PostController extends Controller
         ]);
 
         $post = new Post;
-        $post->fname = auth()->user()->first_name;
-        $post->lname = auth()->user()->last_name;
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
         $post->save();
 
-         return redirect('/posts/publish')->with('success', 'Post created');
+        return redirect('/posts/publish')->with('success', 'Post created');
 
     }
 
@@ -50,15 +48,13 @@ class PostController extends Controller
 
     public function editPost(Request $request, $id){
 
-        $post = Post::find($id);
+        $post = Post::find($request->id);
         return view('posts.edit', compact('post'));
     }
 
     public function updatePost(Request $request){
 
         $post=Post::find($request -> id);
-        $post->fname = auth()->user()->first_name;
-        $post->lname = auth()->user()->last_name;
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
         $post->save();
