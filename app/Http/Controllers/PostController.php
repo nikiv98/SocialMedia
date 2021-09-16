@@ -6,8 +6,13 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=>['index','/','contacts','readAllPost']]);
+    }
   
     public function index(){
         $posts = Post::all();
@@ -69,5 +74,11 @@ class PostController extends Controller
 
         return redirect(route('my.posts'));
 
+    }
+    public function readAllPost($id){
+        
+        $post = Post::find($id);
+
+        return view('posts.readAllPost', compact('post'));
     }
 }
