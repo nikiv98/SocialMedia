@@ -33,14 +33,17 @@ class PostController extends Controller
         $request->validate([
             
             'body' => 'required',
-            'image' => 'mimes:jpg,png,jpeg|max:5048'
+            'image' => 'mimes:jpg,png,jpeg|max:5048|nullable'
         ]);
 
-      
-        $newImageName = $request->file('image')->getClientOriginalName();
+      if($request->hasFile('image')){
 
+        $newImageName = $request->file('image')->getClientOriginalName();
         $request->image->move(public_path('images'), $newImageName);
 
+      }else{
+          $newImageName = "Noimage";
+      }
  
         $post = new Post;
         $post->body = $request->input('body');
