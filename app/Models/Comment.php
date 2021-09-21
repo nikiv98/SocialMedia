@@ -11,7 +11,7 @@ class Comment extends Model
     use HasFactory;
 
     protected $table = 'comments';
-    protected $fillable = ['content', 'post_id', 'user_id'];
+    protected $fillable = ['content'];
 
     public function post(){
 

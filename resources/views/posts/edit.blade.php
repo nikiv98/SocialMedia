@@ -15,7 +15,13 @@
         
         <div class="form-group">
           <label for="exampleFormControlTextarea1" class="wrt_post">Edit your Post</label>
-          <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="6">{{ $post->body }}</textarea>
+          <textarea name="body" class="form-control" id="exampleFormControlTextarea1" rows="6">{{ $post->body }} </textarea>
+          
+          <div class="img-style">
+            <img src="{{ asset('images/'. $post->image_path) }} " >
+          </div>
+          
+          <input type="file" name="image" class="insert-img">
         </div>
         <button type="submit" class="btn btn-primary btn-publish">Edit Post</button>
       </form>

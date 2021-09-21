@@ -96,11 +96,70 @@
     background-color: rgb(190, 185, 185);
     color: black;
     font-size: 20px;
-    position: absolute;
     margin-top: 45px;
+    position: absolute;
+    display: inline-flex;
     
 }
 .post-comt:hover{
     text-decoration: none;
     color: rgb(62, 62, 160);
+}
+.comment-style{
+    border: solid rgb(167, 156, 156);
+    margin-bottom: 10px;
+    margin-left: 500px;
+    margin-top: 20px;
+    padding-left: 15px;
+    padding-top: 10px;
+    width: 40%;
+    overflow-wrap: break-word;
+    box-shadow: 4px 3px 3px grey;
+    
+}
+.author-comm{
+    font-size: 20px;
+    font-weight: 500;
+}
+.cont-txt{
+    padding-top: 10px;
+}
+.create-date{
+    color: rgb(156, 154, 154);
+}
+.btn-comt{
+    margin-top: 15px;
+    border-radius: 20px;
+    justify-content: center;
+}
+.btn-comm-del{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(187, 73, 73);
+    border-radius: 20px;
+    border: solid black 1px
+    
+}
+.pag-cont{
+    margin-left: 1040px;
+    margin-top: 30px;
+}
+.pl-4, .px-4{
+    border-radius: 5px;
+    margin-left: 5px;
+    font-weight: 500;
+}
+.pl-4, .px-4:hover{
+    text-decoration: none;
+}
+.bg-white{
+    background-color:  rgb(190, 185, 185)!important;
+}
+.insert-img{
+    margin-top: 10px;
+    border-radius: 4px;
+}
+.img-style{
+    margin-top: 10px;
+    
 }

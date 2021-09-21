@@ -29,5 +29,6 @@ Route::get('/edit-post/{id}',[PostController::class, 'editPost'])->name('posts.e
 Route::post('/update-post/{id}',[PostController::class, 'updatePost'])->name('posts.update');
 Route::get('/delete-post{id}',[PostController::class, 'deletePost'])->name('delete.post');
 Route::get('/index/read-all/{id}',[PostController::class, 'readAllPost'])->name('posts.readAllPost');
-Route::get('/index/post/comments/{id}',[CommentsController::class, 'show'])->name('posts.comments');
-Route::post('index/post/{post_id}/comments/store', [CommentsController::class, 'storeComment'])->name('comments.store');
+Route::get('/index/post/{post}/comments',[CommentsController::class, 'show'])->name('posts.comments');
+Route::post('index/post/{post}/comments/store', [CommentsController::class, 'storeComment'])->name('comments.store');
+Route::delete('/comments/"{comment}', [CommentsController::class, 'destroyComment'])->name('destroy.comment');
