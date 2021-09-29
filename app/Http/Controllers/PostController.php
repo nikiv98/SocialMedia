@@ -34,16 +34,14 @@ class PostController extends Controller
         $request->validate([
             
             'body' => 'required',
-            'image' => 'mimes:jpg,png,jpeg|max:5048|nullable'
+            'image' => 'mimes:jpg,png,jpeg|max:2048|nullable'
         ]);
 
-      if($request->hasFile('image')){
+      if($request->hasFile('image')){        
 
         $newImageName = $request->file('image')->getClientOriginalName();
         $request->image->move(public_path('images'), $newImageName);
-
-      }else{
-          $newImageName = "Noimage";
+        
       }
  
         $post = new Post;
@@ -53,7 +51,7 @@ class PostController extends Controller
         $post->save();
 
         return redirect(route('posts.index'))->with('success', 'Post created');
-
+      
     }
 
     public function myPosts(){

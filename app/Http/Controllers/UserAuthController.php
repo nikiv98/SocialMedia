@@ -29,7 +29,7 @@ class UserAuthController extends Controller
             'last_name'=>'required',
             'email'=>'required|email|unique:users',
             'password'=>'required|min:5|max:12',
-            'password'=>'confirmed'
+            'password'=>'required|confirmed'
         ]);
 
         $user = new User;
