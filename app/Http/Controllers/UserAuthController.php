@@ -39,7 +39,8 @@ class UserAuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect('login')->with('success', 'You have signed in');
+        Auth::login($user);
+        return redirect('index')->with('success', 'You have signed in');
     }
 
     public function check(Request $request){
@@ -62,7 +63,7 @@ class UserAuthController extends Controller
         return view('auth.dashboard');
     }
 
-    public function change_password(Request $request){
+    public function changePassword(Request $request){
         
         $this->validate($request,[
             'oldPassword' => 'required',
@@ -84,6 +85,24 @@ class UserAuthController extends Controller
             return redirect()->back()->with('errorMsg','Invalid to change password');
         }
 
+    }
+
+    public function profileUpdate(Request $request){
+        
+
+        $request->validate([
+            'newFirstName' =>'required|min:4|string|max:255',
+            'newLastName' =>'required|min:4|string|max:255',
+            'newEmail'=>'required|email|string|max:255'
+        ]);
+        
+        $user = User::find(Auth::id());
+        $user->first_name = $request['newFirstName'];
+        $user->last_name = $request['newLastName'];
+        $user->email = $request['newEmail'];
+        $user->save();
+
+        return back()->with('message','Profile Updated');
     }
 
     public function signOut() {

@@ -22,7 +22,8 @@ Route::get('register', [UserAuthController::class, 'register'])->name('register'
 Route::post('/auth/create',[UserAuthController::class, 'create'])->name('auth.create');
 Route::post('check',[UserAuthController::class, 'check'])->name('auth.check');
 Route::get('/auth/dashboard', [UserAuthController::class, 'dashboard'])->name('dashboard');
-Route::post('auth/dashboard',[UserAuthController::class, 'change_password'])->name('change.password');
+Route::post('auth/dashboard',[UserAuthController::class, 'changePassword'])->name('change.password');
+Route::post('auth/dashboard/profile-update',[UserAuthController::class, 'profileUpdate'])->name('profile.update');
 Route::post('signout', [UserAuthController::class, 'signOut'])->name('signout');
 Route::get('/my_posts',[PostController::class, 'myPosts'])->name('my.posts');
 Route::get('/edit-post/{id}',[PostController::class, 'editPost'])->name('posts.edit');

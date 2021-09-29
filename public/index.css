@@ -89,13 +89,10 @@
     text-decoration: none;
     justify-content: center;
     align-items: center;
-    border: solid rgb(54, 53, 53);
-    border-radius: 30px;
-    padding-left: 10px;
+    padding-left: 5px;
     padding-right: 10px;
-    background-color: rgb(190, 185, 185);
     color: black;
-    font-size: 20px;
+    font-size: 23px;
     margin-top: 45px;
     position: absolute;
     display: inline-flex;
@@ -103,7 +100,23 @@
 }
 .post-comt:hover{
     text-decoration: none;
-    color: rgb(62, 62, 160);
+}
+.post-comt:hover:after{
+    width: 100%; 
+    left: 0; 
+}
+.post-comt:after{
+    background: none repeat scroll 0 0 transparent;
+    bottom: 1;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 0%;
+    position: absolute;
+    background: rgb(62, 62, 160);
+    transition: width 0.2s ease 0s, left 0.3s ease 0s;
+    width: 0;
+    margin-top: 23px;
 }
 .comment-style{
     border: solid rgb(167, 156, 156);
@@ -161,5 +174,48 @@
 }
 .img-style{
     margin-top: 10px;
-    
+}
+
+
+@media only screen and (max-width: 768px){
+    .container-index{
+        display: flex;
+        margin-bottom: 20px;
+        margin-left: 100px;
+        margin-right: 100px;
+        border-radius: 10px;
+        border: solid grey;
+        text-align: center;
+        
+    }
+}
+@media only screen and (max-width: 1024px){
+    .container-index{
+        display: flex;
+        margin-bottom: 20px;
+        margin-left: 100px;
+        margin-right: 100px;
+        border-radius: 10px;
+        border: solid grey;
+        text-align: center;
+        
+    }
+}
+@media only screen and (max-width: 375px){
+    .container-index{
+        display: flex;
+        margin-bottom: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 10px;
+        border: solid grey;
+        text-align: center;
+        
+    }
+    img{
+        width: 200px;
+    }
+    .date-style{
+        padding-left: 50px;
+    }
 }

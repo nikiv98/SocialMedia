@@ -23,8 +23,14 @@
 
                       @endif
                     </p>
+
+                  <div>
+                    <img src="{{ asset('images/'. $post->image_path) }} " class="rounded mx-auto d-block .img-style">
+                  </div>
+
                   <p class="card-text date-style">{{ $post->created_at->diffForHumans() }}</p>
                   <a href="{{ route('posts.comments', $post->id) }}" class="post-comt">Comments</a>
+                  
                   @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
                     <a href="{{ route('posts.edit', $post->id) }}"  class="post-opt p-edit">Edit</a>
                     <a href="{{ route('delete.post', $post->id) }}" class="post-opt p-del">Delete</a>

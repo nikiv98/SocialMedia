@@ -17,6 +17,7 @@ class PostController extends Controller
   
     public function index(){
         $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();
 
         return view('posts.index', [
             'posts' => $posts
@@ -51,7 +52,7 @@ class PostController extends Controller
         $post->user_id = auth()->user()->id;
         $post->save();
 
-        return redirect('/posts/publish')->with('success', 'Post created');
+        return redirect(route('posts.index'))->with('success', 'Post created');
 
     }
 
@@ -73,11 +74,11 @@ class PostController extends Controller
 
         $post=Post::find($id);
         $post->body = $request->input('body');
+        
         if($request->hasFile('image_path')){
 
             $destination = public_path('images') .$post->image_path;
             if(File::exists($destination)){
-
                 File::delete($destination);
             }
 
@@ -86,13 +87,12 @@ class PostController extends Controller
             $filename = time(). '.' . $extention;
             $file->move(public_path('images'), $filename);
             $post->image_path = $filename;
-
         }
         $post->user_id = auth()->user()->id;
         $post->update();
         
-       
         return redirect(route('posts.index'));
+
     }
 
     public function deletePost($id){
@@ -100,7 +100,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post -> delete();
 
-        return redirect(route('my.posts'));
+        return back();
 
     }
     public function readAllPost($id){

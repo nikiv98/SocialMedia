@@ -4,7 +4,11 @@
     <h1 class="mx-auto post-title">Posts</h1>
 
     <div>
-
+      @if (session('success'))
+        <div class="alert alert-success" role="alert">
+          {{ session('success') }}
+        </div>
+      @endif
         @foreach ($posts as $post)
             <div class="card container-index" >
                 <div class="card-body size-style">

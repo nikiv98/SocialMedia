@@ -15,7 +15,8 @@ class CommentsController extends Controller
         
         return view('posts.comments',[
             'post' => $post,
-            'comments'=> Comment::where('post_id', '=', $post->id)->simplePaginate(4)
+            'comments'=> Comment::where('post_id', '=', $post->id)->orderBy('created_at','desc')->simplePaginate(4)
+            
         ]);
     }
 
