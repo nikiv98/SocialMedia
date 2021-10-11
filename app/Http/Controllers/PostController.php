@@ -36,13 +36,15 @@ class PostController extends Controller
             'body' => 'required',
             'image' => 'mimes:jpg,png,jpeg|max:2048|nullable'
         ]);
-
-      if($request->hasFile('image')){        
-
-        $newImageName = $request->file('image')->getClientOriginalName();
-        $request->image->move(public_path('images'), $newImageName);
         
-      }
+        $newImageName = NULL;
+        
+        if($request->hasFile('image')){
+
+            $newImageName = $request->file('image')->getClientOriginalName();
+            $request->image->move(public_path('images'), $newImageName);
+
+        }
  
         $post = new Post;
         $post->body = $request->input('body');
@@ -73,14 +75,14 @@ class PostController extends Controller
         $post=Post::find($id);
         $post->body = $request->input('body');
         
-        if($request->hasFile('image_path')){
+        if($request->hasFile('image')){
 
             $destination = public_path('images') .$post->image_path;
             if(File::exists($destination)){
                 File::delete($destination);
             }
 
-            $file = $request->file('image_path');
+            $file = $request->file('image');
             $extention = $file->getClientOriginalName();
             $filename = time(). '.' . $extention;
             $file->move(public_path('images'), $filename);

@@ -22,7 +22,11 @@
                     @endif</p>
 
                   <div>
-                    <img src="{{ asset('images/'. $post->image_path) }} " class="rounded mx-auto d-block .img-style">
+
+                    @if ($post->image_path != NULL)
+                      <img src="{{ asset('images/'. $post->image_path) }} " class="rounded mx-auto d-block .img-style">
+                    @endif
+
                   </div>
 
                   <p class="card-text date-style">{{ $post->created_at->diffForHumans() }}</p>

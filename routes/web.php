@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -33,3 +34,13 @@ Route::get('/index/read-all/{id}',[PostController::class, 'readAllPost'])->name(
 Route::get('/index/post/{post}/comments',[CommentsController::class, 'show'])->name('posts.comments');
 Route::post('index/post/{post}/comments/store', [CommentsController::class, 'storeComment'])->name('comments.store');
 Route::delete('/comments/"{comment}', [CommentsController::class, 'destroyComment'])->name('destroy.comment');
+
+Route::group(['middleware'=>['auth','admin']], function(){
+
+    Route::get('/admin',[AdminController::class, 'adminDashboard']);
+    Route::get('admin/users',[AdminController::class, 'allUsers'])->name('admin.users');
+    Route::get('/admin/users/{id}',[AdminController::class, 'viewUser'])->name('view.user');
+    Route::get('/admin/users/{id}/edit',[AdminController::class, 'edit'])->name('edit.user');
+    Route::post('/admin/users/{id}/update',[AdminController::class, 'update'])->name('update.user');
+    Route::get('/admin/users/{id}/delete', [AdminController::class, 'delete'])->name('user.delete');
+});

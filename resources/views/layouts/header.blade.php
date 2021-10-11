@@ -27,6 +27,14 @@
         <li class="nav-item">
           <a class="nav-link" href="/contacts">Contact us</a>
         </li>
+
+        <li class="nav-item">
+
+          @if (Auth::check() && Auth::user()->is_admin)
+            <a class="nav-link" href="/admin"><span class="nav-link-admin">Admin Panel</span></a>
+          @endif
+
+        </li>
       </ul>
       <ul class="nav justify-content-end">
         @guest

@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-
-
 class UserAuthController extends Controller
 {
     public function login(){
@@ -54,9 +52,11 @@ class UserAuthController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended('index')
                         ->withSuccess('Signed in');
+                        
         }
-  
+
         return redirect("login")->withSuccess('Login details are not valid');
+
     }
     public function dashboard(){
        
@@ -111,4 +111,5 @@ class UserAuthController extends Controller
 
         return Redirect('login');
     }
+
 }
