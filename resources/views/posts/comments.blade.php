@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    @include('layouts.head')
-</head>
-<body>
-    <header>
-        @include('layouts.header')
-    </header>
+@extends('layouts.app')
+@section('content')
+
     <h1 class="mx-auto post-title">Post Comments</h1>
     <div class="card container-index" >
         <div class="card-body size-style">
             <h3 class="card-title">{{ $post->user->first_name }} {{ $post->user->last_name }}</h3>
             <p class="card-text">{{ $post->body }}</p>
             <div>
-                <img src="{{ asset('images/'. $post->image_path) }} " class="rounded mx-auto d-block .img-style">
+
+                @if ($post->image_path != NULL)
+                    <img src="{{ asset('images/'. $post->image_path) }} " class="rounded mx-auto d-block .img-style">
+                @endif
+            
             </div>
             <div class="date-style">
                 <p class="card-text "><span class="read-all-post">Posted at:</span> {{ $post->created_at }}</p>
@@ -75,10 +73,4 @@
         {{ $comments->links() }}
     </div>  
     
-
-    <footer>
-        @include('layouts.footer')
-    </footer>
-    
-</body>
-</html>
+@endsection

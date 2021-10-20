@@ -1,28 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   @include('layouts.head')
-</head>
-<body>
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <h1>Admin Panel</h1>
-        </div>
-
-        <div class="sidebar-menu">
-            <ul>
-                <li>
-                    <a href="/admin"><span>Dashboard</span></a>
-                </li>
-                <li>
-                    <a href="" class="active"><span>Users</span></a>
-                </li>
-                <li>
-                    <a href="{{ route('posts.index') }}"><span>Exit Admin</span></a>
-                </li>
-            </ul>
-        </div>
-    </div>
+@extends('layouts.admin')
+@section('content')
 
     <div class="main-content">
         <header class="admin-head">
@@ -77,5 +54,4 @@
         </main>
 
     </div>
-</body>
-</html>
+@endsection

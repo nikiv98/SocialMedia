@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -25,8 +26,8 @@ class PostController extends Controller
     }
 
     public function create(){
-
-        return view('posts.publish');
+        $users = User::all()->except(Auth::id());
+        return view('posts.publish', compact('users'));
     }
 
     public function store(Request $request){
@@ -45,11 +46,17 @@ class PostController extends Controller
             $request->image->move(public_path('images'), $newImageName);
 
         }
- 
+
         $post = new Post;
         $post->body = $request->input('body');
         $post->image_path = $newImageName;
-        $post->user_id = auth()->user()->id;
+
+        if(Auth::user()->is_admin && request('select')){
+            $post->user_id = request('select');
+
+        }else{
+            $post->user_id = auth()->user()->id;
+        }
         $post->save();
 
         return redirect(route('posts.index'))->with('success', 'Post created');

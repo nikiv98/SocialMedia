@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    @include('layouts.head')
-</head>
-<body>
-    <header>
-        @include('layouts.header')
-    </header>
+@extends('layouts.app')
+@section('content')
 
     <h1 class="mx-auto post-title">Full Post</h1>
     <div class="card container-index" >
@@ -27,9 +20,5 @@
             @endif
         </div>
     </div>    
-    <footer>
-        @include('layouts.footer')
-    </footer>
     
-</body>
-</html>
+@endsection

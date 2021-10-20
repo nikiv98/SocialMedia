@@ -14,10 +14,7 @@ Route::get('/index', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/publish', [PostController::class, 'create'])->name('posts.publish');
 Route::get('/contacts', [ContactsController::class, 'create'])->name('contacts.contactus');
 Route::post('/contact/store',[ContactsController::class, 'store'])->name('contact.store');
-
-# Added by Velichko
 Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
-
 Route::get('login', [UserAuthController::class, 'login'])->name('login');
 Route::get('register', [UserAuthController::class, 'register'])->name('register');
 Route::post('/auth/create',[UserAuthController::class, 'create'])->name('auth.create');
@@ -34,10 +31,9 @@ Route::get('/index/read-all/{id}',[PostController::class, 'readAllPost'])->name(
 Route::get('/index/post/{post}/comments',[CommentsController::class, 'show'])->name('posts.comments');
 Route::post('index/post/{post}/comments/store', [CommentsController::class, 'storeComment'])->name('comments.store');
 Route::delete('/comments/"{comment}', [CommentsController::class, 'destroyComment'])->name('destroy.comment');
-
 Route::group(['middleware'=>['auth','admin']], function(){
 
-    Route::get('/admin',[AdminController::class, 'adminDashboard']);
+    Route::get('/admin',[AdminController::class, 'adminDashboard'])->name('admin.dashboard');
     Route::get('admin/users',[AdminController::class, 'allUsers'])->name('admin.users');
     Route::get('/admin/users/{id}',[AdminController::class, 'viewUser'])->name('view.user');
     Route::get('/admin/users/{id}/edit',[AdminController::class, 'edit'])->name('edit.user');

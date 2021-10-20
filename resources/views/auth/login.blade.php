@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    @include('layouts.head')
-</head>
-<body>
-    <header>
-        @include('layouts.header')
-    </header>
+@extends('layouts.app')
+@section('content')
     
-    @if (session('successMsg'))
+  @if (session('successMsg'))
 
-      <div class="alert alert-success" role="alert">
-        {{ session('successMsg') }}
-      </div>
+    <div class="alert alert-success" role="alert">
+      {{ session('successMsg') }}
+    </div>
       
-    @endif
-
+  @endif
+  
     <form action="{{ route('auth.check') }}" method="POST" class="w-25 p-3">
         @csrf
         <div class="form-group">
@@ -33,10 +26,6 @@
         </div>
         <br>
         <a class="link" href="register">Create a new account</a>
-      </form>
+    </form>
 
-    <footer>
-        @include('layouts.footer')
-    </footer>
-</body>
-</html>
+@endsection

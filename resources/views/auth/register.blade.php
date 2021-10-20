@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    @include('layouts.head')
-</head>
-<body>
-    <header>
-        @include('layouts.header')
-    </header>
+@extends('layouts.app')
+@section('content')
 
     <form action="{{ route('auth.create') }}" method="POST" class="w-25 p-3">
         @csrf
@@ -38,10 +31,6 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Create Account</button>
         </div>
-      </form>
+    </form>
 
-    <footer>
-        @include('layouts.footer')
-    </footer>
-</body>
-</html>
+ @endsection
