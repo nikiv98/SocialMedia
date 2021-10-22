@@ -12,6 +12,9 @@
                 <a href="{{ route('admin.users') }}" class="{{ request()->routeIs('admin.users', 'view.user', 'edit.user') ? 'active' : '' }}"><span>Users</span></a>
             </li>
             <li>
+                <a href="{{ route('admin.posts') }}" class="{{ request()->routeIs('admin.posts', 'view.post', 'edit.post') ? 'active' : '' }}"><span>Posts</span></a>
+            </li>
+            <li>
                 <a href="{{ route('posts.index') }}"><span>Exit Admin</span></a>
             </li>
         </ul>

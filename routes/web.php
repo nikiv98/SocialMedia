@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\ContactsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -39,4 +40,9 @@ Route::group(['middleware'=>['auth','admin']], function(){
     Route::get('/admin/users/{id}/edit',[AdminController::class, 'edit'])->name('edit.user');
     Route::post('/admin/users/{id}/update',[AdminController::class, 'update'])->name('update.user');
     Route::get('/admin/users/{id}/delete', [AdminController::class, 'delete'])->name('user.delete');
+    Route::get('admin/posts',[AdminPostController::class, 'allPosts'])->name('admin.posts');
+    Route::get('admin/posts/{id}',[AdminPostController::class, 'viewPost'])->name('view.post');
+    Route::get('/admin/posts/{id}/edit',[AdminPostController::class, 'edit'])->name('edit.post');
+    Route::post('/admin/posts/{id}/update',[AdminPostController::class, 'update'])->name('update.post');
+    Route::get('/admin/posts/{id}/delete', [AdminPostController::class, 'delete'])->name('post.delete');
 });
