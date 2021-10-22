@@ -17,7 +17,7 @@
                 <div class="card-body">
                   <p class="card-text">{{ $post->body }}</p>
                   @if ($post->image_path != NULL)
-                    <img src="{{ asset('images/'. $post->image_path) }} " class="rounded mx-auto d-block .img-style">
+                    <img src="{{ asset('images/'. $post->image_path) }} " class="rounded mx-auto d-block img-style">
                   @endif
                   <a href="{{ route('edit.post', $post->id) }}" class="edit-b">Edit</a>
                   <a href="{{ route('delete.post', $post->id) }}" class="del-b">Delete</a>

@@ -105,7 +105,7 @@ class PostController extends Controller
     public function deletePost($id){
       
         $post = Post::find($id);
-        $post -> delete();
+        $post->delete();
 
         return back();
 

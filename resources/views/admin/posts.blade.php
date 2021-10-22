@@ -19,7 +19,6 @@
                             <th scope="col">ID</th>
                             <th scope="col">User Id</th>
                             <th scope="col">Body</th>
-                            <th scope="col">Image Path</th>
                             <th scope="col">Created At</th>
                             <th scope="col">Updated At</th>
                             <th scope="col">View</th>
@@ -37,7 +36,6 @@
                                     <td>
                                         {{ str_limit(strip_tags($post->body), 100) }}
                                     </td>
-                                    <td>{{ $post->image_path }}</td>
                                     <td>{{ $post->created_at }}</td>
                                     <td>{{ $post->updated_at }}</td>
                                     <td><a href="{{ route('view.post', $post->id) }}" class="view-b">View</a></td>

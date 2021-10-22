@@ -14,7 +14,7 @@ class AdminPostController extends Controller
     }
 
     public function viewPost($id){
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         return view('admin.viewPost', compact('post'));
     }
     public function edit(Request $request, $id){
@@ -39,11 +39,13 @@ class AdminPostController extends Controller
         }
         $post->update();
 
-        return view('admin.viewPost');
+        return redirect(route('admin.posts'));
     }
     public function delete($id){
         $post = Post::find($id);
         $post->delete();
+
         return redirect(route('admin.posts'));
+        
     }
 }
