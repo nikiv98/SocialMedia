@@ -50,16 +50,18 @@ class AdminController extends Controller
     }
     public function delete($id){
         $user = User::find($id);
-        foreach($user->post() as $post){
-        
-            foreach($post->comments() as $comment){
-                $comment->delete();
-            }
+        foreach($user->post as $post){
+            
             $post->delete();
         }
-        foreach($user->contacts() as $contact){
+        foreach($user->comments as $comment){
+            
+            $comment->delete();
+        }
+        foreach($user->contacts as $contact){
             $contact->delete();
         }
+        
         $user->delete();
 
         return redirect()->back();
