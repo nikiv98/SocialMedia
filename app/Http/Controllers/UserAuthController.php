@@ -8,6 +8,7 @@ use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
 
 
 
@@ -37,8 +38,10 @@ class UserAuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        Auth::login($user);
-        return redirect('index')->with('success', 'You have signed in');
+        event(new Registered($user));
+        
+        return redirect('login')->with('success', 'You must verify your email');
+
     }
 
     public function check(Request $request){
@@ -55,7 +58,7 @@ class UserAuthController extends Controller
                         
         }
 
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("login")->withErrors('Login details are not valid');
 
     }
     public function dashboard(){

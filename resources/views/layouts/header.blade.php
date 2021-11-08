@@ -12,14 +12,14 @@
         </li>
         <li class="nav-item">
 
-          @if (Auth::user())
+          @if (Auth::check() && Auth::user()->email_verified_at)
             <a class="nav-link" href="{{ route('my.posts') }}">MY Posts</a>
           @endif
 
         </li>
         <li class="nav-item">
           
-            @if (Auth::user())
+            @if (Auth::check() && Auth::user()->email_verified_at)
               <a class="nav-link" href="{{ route('posts.publish') }}">Publish</a>
             @endif
 

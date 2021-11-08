@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except'=>['index','/','contacts','readAllPost']]);
+        $this->middleware(['auth', 'verified'], ['except'=>['index','/','contacts','readAllPost']]);
     }
   
     public function index(){

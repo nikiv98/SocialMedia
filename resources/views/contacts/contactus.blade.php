@@ -13,6 +13,10 @@
         <input name="last_name" type="text" class="form-control form-control-sm" id="exampleFormControlInput1">
       </div>
       <div class="form-group">
+        <label for="exampleFormControlInput1">Email</label>
+        <input name="email" type="email" class="form-control form-control-sm" id="exampleFormControlInput1">
+      </div>
+      <div class="form-group">
         <label for="exampleFormControlTextarea1">Title</label>
         <input name="title" class="form-control form-control-sm" id="exampleFormControlInput1">
       </div>

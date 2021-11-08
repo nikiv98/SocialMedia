@@ -10,6 +10,8 @@ class AdminPostController extends Controller
 {
     public function allPosts(){
         $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->get();
+
         return view('admin.posts', compact('posts'));
     }
 

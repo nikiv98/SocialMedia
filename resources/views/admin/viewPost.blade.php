@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+
     <div class="main-content">
         <header class="admin-head">
             <h2>Posts</h2>

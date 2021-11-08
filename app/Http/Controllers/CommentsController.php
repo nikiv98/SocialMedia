@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\Paginator;
+use App\Jobs\SendEmail;
 
 class CommentsController extends Controller
 {
@@ -29,6 +30,8 @@ class CommentsController extends Controller
         $comment = new Comment(['content' => $request->input('content')]);
         $comment->user()->associate(auth()->user());
         $post->comments()->save($comment);
+
+        SendEmail::dispatch();
 
         return redirect(route('posts.comments', ['post' => $post]));
     }
